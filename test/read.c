@@ -26,10 +26,10 @@ void test_read_stdin(void) {
 
 void test_read_file(void) {
     printf("--- Read from file ---\n");
-    int fd1 = open("test/test_read_file.txt", O_RDONLY);
-    int fd2 = open("test/test_read_file.txt", O_RDONLY);
+    int fd1 = open("test/testing_read_file.txt", O_RDONLY);
+    int fd2 = open("test/testing_read_file.txt", O_RDONLY);
     if (fd1 < 0 || fd2 < 0) {
-        printf("File 'test/test_read_file.txt' not found. Please add it to the test directory.\n");
+        printf("File 'test/testing_read_file.txt' not found. Please add it to the test directory.\n");
         printf("-----------------------------\n");
         if (fd1 >= 0) close(fd1);
         if (fd2 >= 0) close(fd2);
