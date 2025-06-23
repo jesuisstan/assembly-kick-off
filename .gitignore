@@ -1,0 +1,61 @@
+# Prerequisites
+*.d
+.DS_Store
+.editorconfig
+.vscode/
+.idea/
+.editorconfig
+
+# Local testings
+test_strings.cpp
+
+test_*
+*.log
+*.tmp
+*.core
+core
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+#IDE
+.codegpt
+.cursor
+.vscode
+
+# General temp files
+*~
+*.swp
+*.swo
+*.bak
+
+
+
