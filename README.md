@@ -1,2 +1,163 @@
-# assembly-kick-off
-The aim of this project is to become familiar with assembly language
+# libasm (School 42)
+
+## Description
+
+`libasm` is a School 42 project focused on implementing standard C library functions in x86_64 assembly (NASM, Intel syntax) and building them into a static library. The project develops low-level programming skills, understanding of memory management, calling conventions, and C/assembly interoperability.
+
+## Project Goals
+
+- Implement standard C functions in assembly (`strlen`, `strcpy`, `strcmp`, `write`, `read`, `strdup`)
+- Implement bonus list functions (`atoi_base`, `list_push_front`, `list_size`, `list_sort`, `list_remove_if`)
+- Build the `libasm.a` static library
+- Provide comprehensive C tests for each function
+
+## Project Structure
+
+```
+assembly-kick-off/
+├── inc/                # Header files (libasm.h, libasm_bonus.h)
+├── src/                # Core assembly functions
+│   ├── ft_strlen.s
+│   ├── ft_strcpy.s
+│   ├── ft_strcmp.s
+│   ├── ft_write.s
+│   ├── ft_read.s
+│   └── ft_strdup.s
+├── src/bonus/          # Bonus assembly functions
+│   ├── ft_atoi_base.s
+│   ├── ft_list_push_front.s
+│   ├── ft_list_size.s
+│   ├── ft_list_sort.s
+│   └── ft_list_remove_if.s
+├── tests/              # C tests for core functions
+│   ├── strlen.c
+│   ├── strcpy.c
+│   ├── strcmp.c
+│   ├── write.c
+│   ├── read.c
+│   └── strdup.c
+│   └── ...
+│   └── bonus/
+│       ├── ft_atoi_base_test.c
+│       ├── ft_list_push_front_test.c
+│       ├── ft_list_size_test.c
+│       ├── ft_list_sort_test.c
+│       └── ft_list_remove_if_test.c
+├── Makefile            # Build system for library and tests
+└── README.md           # Project documentation
+```
+
+## Build Instructions
+
+Requirements:
+
+- NASM (assembler)
+- GCC (C compiler)
+
+Install NASM (if not already installed):
+
+```sh
+sudo apt update && sudo apt install nasm
+```
+
+Build the core library:
+
+```sh
+make
+```
+
+Build bonus functions:
+
+```sh
+make bonus
+```
+
+Clean all build artifacts:
+
+```sh
+make fclean
+```
+
+## Running Tests
+
+### Core Functions
+
+- **strlen**
+  ```sh
+  make test_strlen
+  ./test_strlen
+  ```
+- **strcpy**
+  ```sh
+  make test_strcpy
+  ./test_strcpy
+  ```
+- **strcmp**
+  ```sh
+  make test_strcmp
+  ./test_strcmp
+  ```
+- **write**
+  ```sh
+  make test_write
+  ./test_write
+  ```
+- **read**
+  ```sh
+  make test_read
+  ./test_read
+  ```
+- **strdup**
+  ```sh
+  make test_strdup
+  ./test_strdup
+  ```
+
+### Bonus Functions
+
+- **ft_atoi_base**
+  ```sh
+  make test_atoi_base
+  ./test_atoi_base
+  ```
+- **ft_list_push_front**
+  ```sh
+  make test_list_push_front
+  ./test_list_push_front
+  ```
+- **ft_list_size**
+  ```sh
+  make test_list_size
+  ./test_list_size
+  ```
+- **ft_list_sort**
+  ```sh
+  make test_list_sort
+  ./test_list_sort
+  ```
+- **ft_list_remove_if**
+  ```sh
+  make test_list_remove_if
+  ./test_list_remove_if
+  ```
+
+## Usage
+
+1. Build the library:
+   ```sh
+   make
+   ```
+2. Include the header file `inc/libasm.h` or `inc/libasm_bonus.h` in your C project.
+3. Link with `libasm.a`:
+   ```sh
+   gcc your_program.c -L. -lasm -o your_program
+   ```
+4. Use the implemented functions as regular C functions.
+
+## Authors & License
+
+This project is part of the [Ecole 42](https://42.fr/) curriculum.
+
+---
+
+**Happy low-level coding!**
