@@ -19,6 +19,9 @@ void test_size(const char *desc, t_list *list, int expected) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_LIST_SIZE\n");
+    printf("====================\n\n");
     t_list *list = NULL;
 
     test_size("Size of empty list", list, 0);

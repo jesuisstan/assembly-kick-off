@@ -23,12 +23,12 @@ assembly-kick-off/
 │   ├── ft_write.s
 │   ├── ft_read.s
 │   └── ft_strdup.s
-├── src/bonus/          # Bonus assembly functions
-│   ├── ft_atoi_base.s
-│   ├── ft_list_push_front.s
-│   ├── ft_list_size.s
-│   ├── ft_list_sort.s
-│   └── ft_list_remove_if.s
+│   └── bonus/          # Bonus assembly functions
+│       ├── ft_atoi_base.s
+│       ├── ft_list_push_front.s
+│       ├── ft_list_size.s
+│       ├── ft_list_sort.s
+│       └── ft_list_remove_if.s
 ├── tests/              # C tests for core functions
 │   ├── strlen.c
 │   ├── strcpy.c
@@ -161,3 +161,10 @@ This project is part of the [Ecole 42](https://42.fr/) curriculum.
 ---
 
 **Happy low-level coding!**
+
+## Useful x86-64 Assembly References
+
+- [x86_64 NASM Assembly Quick Reference (Cheat Sheet)](https://www.cs.uaf.edu/2017/fall/cs301/reference/x86_64.html) — register table, instructions, calling conventions, memory, syntax
+- [x64 Cheat Sheet (PDF)](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf) — registers, instructions, operands, stack, function calls
+- [x64 NASM Cheat Sheet (GitHub Gist)](https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6) — concise NASM cheat sheet
+- [x86 Instruction Reference by Felix Cloutier](https://www.felixcloutier.com/x86/) — full x86/x86-64 instruction reference

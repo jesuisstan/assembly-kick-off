@@ -11,6 +11,9 @@ void test_atoi_base(const char *desc, char *str, char *base, int expected) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_ATOI_BASE\n");
+    printf("====================\n\n");
     test_atoi_base("Base 2", "101010", "01", 42);
     test_atoi_base("Base 10", "-42", "0123456789", -42);
     test_atoi_base("Base 16", "2A", "0123456789abcdef", 42);

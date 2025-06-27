@@ -86,6 +86,9 @@ void test_read_zero_bytes(void) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_READ\n");
+    printf("====================\n\n");
     test_read_stdin();
     test_read_file();
     test_read_invalid_fd();

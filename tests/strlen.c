@@ -15,6 +15,9 @@ void test_strlen(const char *desc, const char *s, int is_valid) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_STRLEN\n");
+    printf("====================\n\n");
     test_strlen("Empty string", "", 1);
     test_strlen("Short string", "42", 1);
     test_strlen("Hello world", "Hello, world!", 1);

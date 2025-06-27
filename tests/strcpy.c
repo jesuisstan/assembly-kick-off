@@ -21,6 +21,9 @@ void test_strcpy(const char *desc, char *dst, const char *src, int is_valid) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_STRCPY\n");
+    printf("====================\n\n");
     char buf[128];
     test_strcpy("Copy empty string", buf, "", 1);
     test_strcpy("Copy short string", buf, "42", 1);

@@ -14,7 +14,7 @@ ft_write:
 
 .null_buf:
     mov     edi, 14             ; EFAULT = 14
-    call    __errno_location
+    call    qword [rel __errno_location wrt ..gotpc]
     mov     dword [rax], edi    ; *errno = EFAULT
     mov     rax, -1
     ret
@@ -22,7 +22,7 @@ ft_write:
 .error:
     neg     rax                 ; rax = -errno
     mov     edi, eax            ; edi = errno
-    call    __errno_location
+    call    qword [rel __errno_location wrt ..gotpc]
     mov     dword [rax], edi    ; *errno = errno
     mov     rax, -1
     ret 

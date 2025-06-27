@@ -26,6 +26,9 @@ void test_strdup(const char *desc, const char *src, int is_valid) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_STRDUP\n");
+    printf("====================\n\n");
     test_strdup("Empty string", "", 1);
     test_strdup("Short string", "42", 1);
     test_strdup("Long string", "A very very long string just to check the boundaries and see if everything works fine.", 1);

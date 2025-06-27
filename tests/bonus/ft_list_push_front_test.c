@@ -32,6 +32,10 @@ void test_push_front(const char *desc, t_list **list, char *data) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_LIST_PUSH_FRONT\n");
+    printf("====================\n\n");
+
     t_list *list = NULL;
 
     test_push_front("Push to empty list", &list, "data1");

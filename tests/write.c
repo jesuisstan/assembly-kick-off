@@ -27,6 +27,9 @@ void test_write(const char *desc, int fd, const void *buf, size_t count, int is_
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_WRITE\n");
+    printf("====================\n\n");
     test_write("Write to stdout", 1, "Hello\n", 6, 1);
     test_write("Write to stderr", 2, "Error\n", 6, 1);
     test_write("Write empty string", 1, "", 0, 1);

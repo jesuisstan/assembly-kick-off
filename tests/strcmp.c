@@ -15,11 +15,14 @@ void test_strcmp(const char *desc, const char *s1, const char *s2, int is_valid)
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_STRCMP\n");
+    printf("====================\n\n");
     test_strcmp("Both empty", "", "", 1);
     test_strcmp("Equal short", "42", "42", 1);
     test_strcmp("Equal long", "Hello, world!", "Hello, world!", 1);
-    test_strcmp("Diff at start", "abc", "xbc", 1);
-    test_strcmp("Diff at end", "abc", "abd", 1);
+    test_strcmp("Diff at start", "abc", "xbc", 1); // 'a' (ASCII 97) vs 'x' (ASCII 120)
+    test_strcmp("Diff at end", "abc", "abd", 1); // 'c' (ASCII 99) vs 'd' (ASCII 100)
     test_strcmp("s1 < s2", "abc", "bcd", 1);
     test_strcmp("s1 > s2", "bcd", "abc", 1);
     test_strcmp("s1 empty, s2 not", "", "abc", 1);

@@ -96,6 +96,10 @@ void test_sort(const char *desc, char **data, int size) {
 }
 
 int main(void) {
+    printf("\n====================\n");
+    printf("TESTING FT_LIST_SORT\n");
+    printf("====================\n\n");
+
     test_sort("Sort empty list", NULL, 0);
 
     char *unsorted[] = {"Charlie", "Alpha", "Delta", "Bravo"};
