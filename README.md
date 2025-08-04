@@ -29,20 +29,8 @@ assembly-kick-off/
 │       ├── ft_list_size.s
 │       ├── ft_list_sort.s
 │       └── ft_list_remove_if.s
-├── tests/              # C tests for core functions
-│   ├── strlen.c
-│   ├── strcpy.c
-│   ├── strcmp.c
-│   ├── write.c
-│   ├── read.c
-│   └── strdup.c
-│   └── ...
-│   └── bonus/
-│       ├── ft_atoi_base_test.c
-│       ├── ft_list_push_front_test.c
-│       ├── ft_list_size_test.c
-│       ├── ft_list_sort_test.c
-│       └── ft_list_remove_if_test.c
+├── main.c              # C tests for core functions
+├── main_bonus.c        # C tests for bonus functions
 ├── Makefile            # Build system for library and tests
 └── README.md           # Project documentation
 ```
