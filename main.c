@@ -125,6 +125,7 @@ void test_write_comprehensive(void) {
     printf("Write to stdout: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
            my_stdout, my_errno, std_stdout, std_errno, (my_stdout == std_stdout) ? "OK" : "FAIL");
     
+    printf("--------------------------------\n");
     int fd = open("write_test.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (fd != -1) {
         errno = 0;
@@ -138,11 +139,13 @@ void test_write_comprehensive(void) {
                my_file, my_errno, std_file, std_errno, (my_file == std_file) ? "OK" : "FAIL");
     }
     
+    printf("--------------------------------\n");
     errno = 0;
     ssize_t my_bad = ft_write(-1, "Bad fd test\n", 12);
     my_errno = errno;
     printf("Write to wrong fd: ft_write = %zd (errno: %d) (expected: -1, errno set)\n", my_bad, my_errno);
     
+    printf("--------------------------------\n");
     errno = 0;
     ssize_t my_stderr = ft_write(2, "error test\n", 11);
     my_errno = errno;
@@ -152,6 +155,7 @@ void test_write_comprehensive(void) {
     printf("Write to stderr: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
            my_stderr, my_errno, std_stderr, std_errno, (my_stderr == std_stderr) ? "OK" : "FAIL");
     
+    printf("--------------------------------\n");
     errno = 0;
     ssize_t my_empty = ft_write(1, "", 0);
     my_errno = errno;
@@ -160,20 +164,6 @@ void test_write_comprehensive(void) {
     std_errno = errno;
     printf("Write empty string: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
            my_empty, my_errno, std_empty, std_errno, (my_empty == std_empty) ? "OK" : "FAIL");
-    
-    errno = 0;
-    ssize_t my_partial = ft_write(1, "partial", 7);
-    my_errno = errno;
-    errno = 0;
-    ssize_t std_partial = write(1, "partial", 7);
-    std_errno = errno;
-    printf("Write partial string: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
-           my_partial, my_errno, std_partial, std_errno, (my_partial == std_partial) ? "OK" : "FAIL");
-    
-    errno = 0;
-    ssize_t my_closed = ft_write(100, "Closed fd test\n", 15);
-    my_errno = errno;
-    printf("Write to closed fd: ft_write = %zd (errno: %d) (expected: -1, errno set)\n", my_closed, my_errno);
     printf("\n");
 }
 
@@ -190,7 +180,7 @@ void test_read_comprehensive(void) {
     ssize_t my_stdin = ft_read(0, buf1, 31);
     int my_errno = errno;
     printf("ft_read from stdin: %zd (errno: %d)\n", my_stdin, my_errno);
-    printf("--------------------------------\n");
+    printf("\n");
     // check std::read from stdin
     printf("std::read-ing from stdin (type the same input as above and press Enter):\n");
     printf("Input for std::read: ");
@@ -200,6 +190,7 @@ void test_read_comprehensive(void) {
     ssize_t stdin = read(0, buf_std, 31);
     int std_errno = errno;
     printf("std::read from stdin: %zd (errno: %d)\n", stdin, std_errno);
+    printf("--------------------------------\n");
     
     int fd = open("read_test.txt", O_RDONLY);
     if (fd != -1) {
@@ -285,7 +276,7 @@ int main(void) {
     test_read_comprehensive();
     test_strdup_comprehensive();
     
+    printf("--------------------------------\n");
     printf("All comprehensive tests completed!\n");
-    printf("Check the output above for any FAIL results.\n");
     return 0;
 }

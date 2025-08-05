@@ -17,9 +17,12 @@ ft_strcmp:
     inc     rsi             ; Next char s2
     jmp     .loop
 .diff:
-    movzx   eax, al         ; Zero-extend al
-    movzx   edx, dl         ; Zero-extend dl
-    sub     eax, edx        ; Return difference
+    cmp     al, dl          ; Compare bytes again
+    jl      .less           ; If s1 < s2, return -1
+    mov     eax, 1          ; If s1 > s2, return 1
+    ret
+.less:
+    mov     eax, -1         ; Return -1
     ret
 .done:
     xor     eax, eax        ; Return 0

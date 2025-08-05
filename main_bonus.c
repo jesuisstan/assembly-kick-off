@@ -7,6 +7,11 @@
 #include <errno.h>
 #include <stdlib.h>
 
+// ==================== HELPER FUNCTIONS ====================
+int strcmp_wrapper(void *a, void *b) {
+    return strcmp((char *)a, (char *)b);
+}
+
 // ==================== FT_ATOI_BASE TESTS ====================
 void test_atoi_base_comprehensive(void) {
     printf("=== FT_ATOI_BASE TESTS ===\n\n");
@@ -29,12 +34,15 @@ void test_list_push_front_comprehensive(void) {
     t_list *list = NULL;
     
     printf("Testing ft_list_push_front functionality:\n");
+    printf("Adding 'First'...\n");
     ft_list_push_front(&list, "First");
+    printf("Adding 'Second'...\n");
     ft_list_push_front(&list, "Second");
+    printf("Adding 'Third'...\n");
     ft_list_push_front(&list, "Third");
     
     printf("List size: %d\n", ft_list_size(list));
-    printf("List contents: ");
+    printf("List contents (LIFO order - last in, first out): ");
     t_list *current = list;
     while (current) {
         printf(" -> %s", (char *)current->data);
@@ -60,25 +68,18 @@ void test_list_size_comprehensive(void) {
     
     printf("Empty list size: %d\n", ft_list_size(list));
     
-    // Add elements
+    // Add elements manually (in reverse order for correct display)
     t_list *new1 = malloc(sizeof(t_list));
-    new1->data = "First";
+    new1->data = "21";
     new1->next = list;
     list = new1;
     
     t_list *new2 = malloc(sizeof(t_list));
-    new2->data = "Second";
+    new2->data = "42";
     new2->next = list;
     list = new2;
     
-    printf("List with 2 elements size: %d\n", ft_list_size(list));
-    printf("List contents: ");
-    t_list *current = list;
-    while (current) {
-        printf(" -> %s", (char *)current->data);
-        current = current->next;
-    }
-    printf("\n");
+    printf("List with 2 ('21' -> '42') elements size: %d\n", ft_list_size(list));
     
     // Cleanup
     while (list) {
@@ -100,17 +101,23 @@ void test_list_sort_comprehensive(void) {
     t_list *new2 = malloc(sizeof(t_list));
     t_list *new3 = malloc(sizeof(t_list));
     
+    // Adding elements manually (in reverse order for correct display)
+    // 1st: "Charlie" becomes last in list
     new1->data = "Charlie";
     new1->next = list;
     list = new1;
+    
+    // 2nd: "Alpha" becomes second in list
     new2->data = "Alpha";
     new2->next = list;
     list = new2;
+    
+    // 3rd: "Bravo" becomes first in list
     new3->data = "Bravo";
     new3->next = list;
     list = new3;
     
-    printf("Before sorting: ");
+    printf("Before sorting (Bravo -> Alpha -> Charlie): ");
     t_list *current = list;
     while (current) {
         printf(" -> %s", (char *)current->data);
@@ -118,7 +125,7 @@ void test_list_sort_comprehensive(void) {
     }
     printf("\n");
     
-    ft_list_sort(&list, (int (*)())strcmp);
+    ft_list_sort(&list, strcmp_wrapper);
     
     printf("After sorting: ");
     current = list;
@@ -149,17 +156,23 @@ void test_list_remove_if_comprehensive(void) {
     t_list *new2 = malloc(sizeof(t_list));
     t_list *new3 = malloc(sizeof(t_list));
     
+    // Adding elements manually (in reverse order for correct display)
+    // 1st: "First" becomes last in list
     new1->data = "First";
     new1->next = list;
     list = new1;
+    
+    // 2nd: "Second" becomes second in list
     new2->data = "Second";
     new2->next = list;
     list = new2;
+    
+    // 3rd: "Third" becomes first in list
     new3->data = "Third";
     new3->next = list;
     list = new3;
     
-    printf("Before removing 'Second': ");
+    printf("Before removing 'Second' (Third -> Second -> First): ");
     t_list *current = list;
     while (current) {
         printf(" -> %s", (char *)current->data);
@@ -167,7 +180,7 @@ void test_list_remove_if_comprehensive(void) {
     }
     printf("\n");
     
-    ft_list_remove_if(&list, "Second", (int (*)())strcmp, NULL);
+    ft_list_remove_if(&list, "Second", strcmp_wrapper, NULL);
     
     printf("After removing 'Second': ");
     current = list;
@@ -197,7 +210,7 @@ int main(void) {
     test_list_sort_comprehensive();
     test_list_remove_if_comprehensive();
     
+    printf("--------------------------------\n");
     printf("All bonus tests completed!\n");
-    printf("Check the output above for any FAIL results.\n");
     return 0;
 } 
