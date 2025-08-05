@@ -9,10 +9,14 @@ OBJS = $(SRCS:.s=.o)
 OBJS_BONUS = $(SRCS_BONUS:.s=.o)
 INCLUDES = -Iinc
 
-all: $(NAME) test_program
+all: $(NAME)
 
-bonus: $(NAME) $(OBJS_BONUS) test_program_bonus
-	ar rcs $(NAME) $(OBJS_BONUS)
+bonus: $(NAME) $(OBJS_BONUS)
+	@if [ ! -f $(NAME) ] || [ src/bonus/ft_atoi_base.o -nt $(NAME) ] || [ src/bonus/ft_list_push_front.o -nt $(NAME) ] || [ src/bonus/ft_list_size.o -nt $(NAME) ] || [ src/bonus/ft_list_sort.o -nt $(NAME) ] || [ src/bonus/ft_list_remove_if.o -nt $(NAME) ]; then \
+		ar rcs $(NAME) $(OBJS_BONUS); \
+	else \
+		echo "$(NAME) is up to date"; \
+	fi
 
 $(NAME): $(OBJS)
 	ar rcs $@ $^
@@ -33,10 +37,18 @@ re: fclean all
 
 # ==================== TEST PROGRAMS ====================
 test_program: main.c $(NAME)
-	$(CC) $(CFLAGS) main.c -L. -lasm $(INCLUDES) -o test_program
+	@if [ ! -f test_program ] || [ main.c -nt test_program ] || [ $(NAME) -nt test_program ]; then \
+		$(CC) $(CFLAGS) $< -L. -lasm $(INCLUDES) -o $@; \
+	else \
+		echo "test_program is up to date"; \
+	fi
 
 test_program_bonus: main_bonus.c $(NAME) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS_BONUS)
-	$(CC) $(CFLAGS) main_bonus.c -L. -lasm $(INCLUDES) -o test_program_bonus
+	@if [ ! -f test_program_bonus ] || [ main_bonus.c -nt test_program_bonus ] || [ $(NAME) -nt test_program_bonus ]; then \
+		ar rcs $(NAME) $(OBJS_BONUS); \
+		$(CC) $(CFLAGS) $< -L. -lasm $(INCLUDES) -o $@; \
+	else \
+		echo "test_program_bonus is up to date"; \
+	fi
 
 .PHONY: all bonus clean fclean re test_program test_program_bonus
