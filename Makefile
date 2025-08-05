@@ -2,7 +2,7 @@ NAME = libasm.a
 CC = gcc
 NASM = nasm
 NASMFLAGS = -f elf64 -DPIC
-CFLAGS = -Wall -Wextra -Werror -fPIE
+CFLAGS = -Wall -Wextra -Werror
 SRCS = src/ft_strlen.s src/ft_strcpy.s src/ft_strcmp.s src/ft_write.s src/ft_read.s src/ft_strdup.s
 SRCS_BONUS = src/bonus/ft_atoi_base.s src/bonus/ft_list_push_front.s src/bonus/ft_list_size.s src/bonus/ft_list_sort.s src/bonus/ft_list_remove_if.s
 OBJS = $(SRCS:.s=.o)
@@ -31,11 +31,12 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re test_program test_program_bonus
-
+# ==================== TEST PROGRAMS ====================
 test_program: main.c $(NAME)
 	$(CC) $(CFLAGS) main.c -L. -lasm $(INCLUDES) -o test_program
 
 test_program_bonus: main_bonus.c $(NAME) $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS_BONUS)
 	$(CC) $(CFLAGS) main_bonus.c -L. -lasm $(INCLUDES) -o test_program_bonus
+
+.PHONY: all bonus clean fclean re test_program test_program_bonus

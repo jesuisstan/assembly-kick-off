@@ -116,10 +116,11 @@ void test_write_comprehensive(void) {
     printf("=== FT_WRITE COMPREHENSIVE TESTS ===\n\n");
     
     errno = 0;
-    ssize_t my_stdout = ft_write(1, "Write to stdout test\n", 20);
+
+    ssize_t my_stdout = ft_write(1, "write test\n", 11);
     int my_errno = errno;
     errno = 0;
-    ssize_t std_stdout = write(1, "Write to stdout test\n", 20);
+    ssize_t std_stdout = write(1, "write test\n", 11);
     int std_errno = errno;
     printf("Write to stdout: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
            my_stdout, my_errno, std_stdout, std_errno, (my_stdout == std_stdout) ? "OK" : "FAIL");
@@ -143,10 +144,10 @@ void test_write_comprehensive(void) {
     printf("Write to wrong fd: ft_write = %zd (errno: %d) (expected: -1, errno set)\n", my_bad, my_errno);
     
     errno = 0;
-    ssize_t my_stderr = ft_write(2, "Error test\n", 11);
+    ssize_t my_stderr = ft_write(2, "error test\n", 11);
     my_errno = errno;
     errno = 0;
-    ssize_t std_stderr = write(2, "Error test\n", 11);
+    ssize_t std_stderr = write(2, "error test\n", 11);
     std_errno = errno;
     printf("Write to stderr: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
            my_stderr, my_errno, std_stderr, std_errno, (my_stderr == std_stderr) ? "OK" : "FAIL");
@@ -161,10 +162,10 @@ void test_write_comprehensive(void) {
            my_empty, my_errno, std_empty, std_errno, (my_empty == std_empty) ? "OK" : "FAIL");
     
     errno = 0;
-    ssize_t my_partial = ft_write(1, "Partial", 4);
+    ssize_t my_partial = ft_write(1, "partial", 7);
     my_errno = errno;
     errno = 0;
-    ssize_t std_partial = write(1, "Partial", 4);
+    ssize_t std_partial = write(1, "partial", 7);
     std_errno = errno;
     printf("Write partial string: ft_write = %zd (errno: %d) | write = %zd (errno: %d) | %s\n", 
            my_partial, my_errno, std_partial, std_errno, (my_partial == std_partial) ? "OK" : "FAIL");
@@ -180,7 +181,8 @@ void test_write_comprehensive(void) {
 void test_read_comprehensive(void) {
     printf("=== FT_READ COMPREHENSIVE TESTS ===\n\n");
     
-    printf("Read from stdin (type something and press Enter):\n");
+    // check ft_read from stdin
+    printf("ft_read-ing from stdin (type something and press Enter):\n");
     printf("Input for ft_read: ");
     fflush(stdout);
     char buf1[32] = {0};
@@ -188,6 +190,16 @@ void test_read_comprehensive(void) {
     ssize_t my_stdin = ft_read(0, buf1, 31);
     int my_errno = errno;
     printf("ft_read from stdin: %zd (errno: %d)\n", my_stdin, my_errno);
+    printf("--------------------------------\n");
+    // check std::read from stdin
+    printf("std::read-ing from stdin (type the same input as above and press Enter):\n");
+    printf("Input for std::read: ");
+    fflush(stdout);
+    char buf_std[32] = {0};
+    errno = 0;
+    ssize_t stdin = read(0, buf_std, 31);
+    int std_errno = errno;
+    printf("std::read from stdin: %zd (errno: %d)\n", stdin, std_errno);
     
     int fd = open("read_test.txt", O_RDONLY);
     if (fd != -1) {
