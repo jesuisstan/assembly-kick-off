@@ -16,13 +16,13 @@ int strcmp_wrapper(void *a, void *b) {
 void test_atoi_base_comprehensive(void) {
     printf("=== FT_ATOI_BASE TESTS ===\n\n");
     
-    printf("Base 2: ft_atoi_base(\"101010\", \"01\") = %d (expected: 42)\n", 
+    printf("Binary to decimal: \"101010\" (base 2) -> %d (decimal)\n", 
            ft_atoi_base("101010", "01"));
-    printf("Base 314: ft_atoi_base(\"42\", \"0123456789....\") = %d (expected: 0 for invalid)\n", 
+    printf("Invalid base test: \"42\" with invalid base -> %d (should return 0)\n", 
            ft_atoi_base("42", "0123456789...."));
-    printf("Base 10: ft_atoi_base(\"-42\", \"0123456789\") = %d (expected: -42)\n", 
+    printf("Decimal with sign: \"-42\" (base 10) -> %d (decimal)\n", 
            ft_atoi_base("-42", "0123456789"));
-    printf("Base 16: ft_atoi_base(\"2A\", \"0123456789abcdef\") = %d (expected: 42)\n", 
+    printf("Hexadecimal to decimal: \"2A\" (base 16) -> %d (decimal)\n", 
            ft_atoi_base("2A", "0123456789abcdef"));
     printf("\n");
 }

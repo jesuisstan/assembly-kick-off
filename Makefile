@@ -1,7 +1,7 @@
 NAME = libasm.a
 CC = gcc
 NASM = nasm
-NASMFLAGS = -f elf64 -DPIC
+NASMFLAGS = -f elf64
 CFLAGS = -Wall -Wextra -Werror
 SRCS = src/ft_strlen.s src/ft_strcpy.s src/ft_strcmp.s src/ft_write.s src/ft_read.s src/ft_strdup.s
 SRCS_BONUS = src/bonus/ft_atoi_base.s src/bonus/ft_list_push_front.s src/bonus/ft_list_size.s src/bonus/ft_list_sort.s src/bonus/ft_list_remove_if.s
