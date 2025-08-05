@@ -35,9 +35,7 @@ assembly-kick-off/
 └── README.md           # Project documentation
 ```
 
-## Build Instructions
-
-Requirements:
+## Requirements
 
 - NASM (assembler)
 - GCC (C compiler)
@@ -47,80 +45,6 @@ Install NASM (if not already installed):
 ```sh
 sudo apt update && sudo apt install nasm
 ```
-
-Build the core library:
-
-```sh
-make
-```
-
-Build bonus functions:
-
-```sh
-make bonus
-```
-
-Clean all build artifacts:
-
-```sh
-make fclean
-```
-
-## Running Tests
-
-### Core Functions
-
-Run comprehensive tests for all core functions:
-
-```sh
-make test_program
-./test_program
-```
-
-This will test:
-
-- **ft_strlen** - string length calculation
-- **ft_strcpy** - string copying
-- **ft_strcmp** - string comparison
-- **ft_write** - writing to file descriptors
-- **ft_read** - reading from file descriptors
-- **ft_strdup** - string duplication
-
-### Bonus Functions
-
-Run comprehensive tests for all bonus functions:
-
-```sh
-make test_program_bonus
-./test_program_bonus
-```
-
-This will test:
-
-- **ft_atoi_base** - string to integer conversion with custom base
-- **ft_list_push_front** - adding elements to linked list
-- **ft_list_size** - counting elements in linked list
-- **ft_list_sort** - sorting linked list
-- **ft_list_remove_if** - removing elements from linked list
-
-## Usage
-
-1. Build the library:
-   ```sh
-   make
-   ```
-2. For bonus functions, build with bonus:
-   ```sh
-   make bonus
-   ```
-3. Include the appropriate header file in your C project:
-   - `inc/libasm.h` for core functions
-   - `inc/libasm_bonus.h` for bonus functions
-4. Link with `libasm.a`:
-   ```sh
-   gcc your_program.c -L. -lasm -o your_program
-   ```
-5. Use the implemented functions as regular C functions.
 
 ## Quick Start
 
@@ -135,6 +59,50 @@ make bonus
 make test_program_bonus
 ./test_program_bonus
 ```
+
+## Build Commands
+
+```sh
+make              # Build core library (libasm.a)
+make bonus        # Build bonus functions
+make fclean       # Clean all build artifacts
+make re           # Rebuild everything
+```
+
+## Testing
+
+### Core Functions
+
+```sh
+make test_program
+./test_program
+```
+
+Tests: **ft_strlen**, **ft_strcpy**, **ft_strcmp**, **ft_write**, **ft_read**, **ft_strdup**
+
+### Bonus Functions
+
+```sh
+make test_program_bonus
+./test_program_bonus
+```
+
+Tests: **ft_atoi_base**, **ft_list_push_front**, **ft_list_size**, **ft_list_sort**, **ft_list_remove_if**
+
+## Usage in Your Project
+
+1. Include the appropriate header file:
+
+   - `inc/libasm.h` for core functions
+   - `inc/libasm_bonus.h` for bonus functions
+
+2. Link with `libasm.a`:
+
+   ```sh
+   gcc your_program.c -L. -lasm -o your_program
+   ```
+
+3. Use the functions as regular C functions.
 
 ## Authors & License
 
