@@ -143,7 +143,7 @@ void test_write_comprehensive(void) {
     errno = 0;
     ssize_t my_bad = ft_write(-1, "Bad fd test\n", 12);
     my_errno = errno;
-    printf("Write to wrong fd: ft_write = %zd (errno: %d) (expected: -1, errno set)\n", my_bad, my_errno);
+    printf("Write to wrong fd: ft_write = %zd (errno: %d) (expected: -1, errno set (e.g, 9 - EBADF, Bad file descriptor))\n", my_bad, my_errno);
     
     printf("--------------------------------\n");
     errno = 0;
@@ -205,12 +205,12 @@ void test_read_comprehensive(void) {
     errno = 0;
     ssize_t my_bad = ft_read(-1, buf1, 10);
     my_errno = errno;
-    printf("Read from wrong fd: ft_read = %zd (errno: %d) (expected: -1, errno set)\n", my_bad, my_errno);
+    printf("Read from wrong fd: ft_read = %zd (errno: %d) (expected: -1, errno set (e.g, 9 - EBADF, Bad file descriptor))\n", my_bad, my_errno);
     
     errno = 0;
     ssize_t my_null = ft_read(0, NULL, 10);
     my_errno = errno;
-    printf("Read with NULL buf: ft_read = %zd (errno: %d) (expected: -1, errno=EFAULT)\n", my_null, my_errno);
+    printf("Read with NULL buf: ft_read = %zd (errno: %d) (expected: -1, errno=14 (EFAULT, Bad address))\n", my_null, my_errno);
     
     errno = 0;
     ssize_t my_zero = ft_read(0, buf1, 0);
