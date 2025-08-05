@@ -48,13 +48,17 @@ sudo apt update && sudo apt install nasm
 
 ## Quick Start
 
+**Build library and run core tests:**
+
 ```sh
-# Build library and run core tests
 make
 make test_program
 ./test_program
+```
 
-# Build bonus functions and run bonus tests
+**Build bonus functions and run bonus tests:**
+
+```sh
 make bonus
 make test_program_bonus
 ./test_program_bonus
@@ -62,11 +66,28 @@ make test_program_bonus
 
 ## Build Commands
 
+**Build core library:**
+
 ```sh
-make              # Build core library (libasm.a)
-make bonus        # Build bonus functions
-make fclean       # Clean all build artifacts
-make re           # Rebuild everything
+make
+```
+
+**Build bonus functions:**
+
+```sh
+make bonus
+```
+
+**Clean all build artifacts:**
+
+```sh
+make fclean
+```
+
+**Rebuild everything:**
+
+```sh
+make re
 ```
 
 ## Testing
