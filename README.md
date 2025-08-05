@@ -92,7 +92,7 @@ make re
 
 ## Testing
 
-### Core Functions
+**Test core functions:**
 
 ```sh
 make test_program
@@ -101,7 +101,7 @@ make test_program
 
 Tests: **ft_strlen**, **ft_strcpy**, **ft_strcmp**, **ft_write**, **ft_read**, **ft_strdup**
 
-### Bonus Functions
+**Test bonus functions:**
 
 ```sh
 make test_program_bonus
