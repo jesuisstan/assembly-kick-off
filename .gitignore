@@ -57,5 +57,4 @@ obj
 *.swo
 *.bak
 
-
-
+write_test.txt

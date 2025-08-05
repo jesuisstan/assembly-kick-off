@@ -70,64 +70,38 @@ make fclean
 
 ### Core Functions
 
-- **strlen**
-  ```sh
-  make test_strlen
-  ./test_strlen
-  ```
-- **strcpy**
-  ```sh
-  make test_strcpy
-  ./test_strcpy
-  ```
-- **strcmp**
-  ```sh
-  make test_strcmp
-  ./test_strcmp
-  ```
-- **write**
-  ```sh
-  make test_write
-  ./test_write
-  ```
-- **read**
-  ```sh
-  make test_read
-  ./test_read
-  ```
-- **strdup**
-  ```sh
-  make test_strdup
-  ./test_strdup
-  ```
+Run comprehensive tests for all core functions:
+
+```sh
+make test_program
+./test_program
+```
+
+This will test:
+
+- **ft_strlen** - string length calculation
+- **ft_strcpy** - string copying
+- **ft_strcmp** - string comparison
+- **ft_write** - writing to file descriptors
+- **ft_read** - reading from file descriptors
+- **ft_strdup** - string duplication
 
 ### Bonus Functions
 
-- **ft_atoi_base**
-  ```sh
-  make test_atoi_base
-  ./test_atoi_base
-  ```
-- **ft_list_push_front**
-  ```sh
-  make test_list_push_front
-  ./test_list_push_front
-  ```
-- **ft_list_size**
-  ```sh
-  make test_list_size
-  ./test_list_size
-  ```
-- **ft_list_sort**
-  ```sh
-  make test_list_sort
-  ./test_list_sort
-  ```
-- **ft_list_remove_if**
-  ```sh
-  make test_list_remove_if
-  ./test_list_remove_if
-  ```
+Run comprehensive tests for all bonus functions:
+
+```sh
+make test_program_bonus
+./test_program_bonus
+```
+
+This will test:
+
+- **ft_atoi_base** - string to integer conversion with custom base
+- **ft_list_push_front** - adding elements to linked list
+- **ft_list_size** - counting elements in linked list
+- **ft_list_sort** - sorting linked list
+- **ft_list_remove_if** - removing elements from linked list
 
 ## Usage
 
@@ -135,12 +109,32 @@ make fclean
    ```sh
    make
    ```
-2. Include the header file `inc/libasm.h` or `inc/libasm_bonus.h` in your C project.
-3. Link with `libasm.a`:
+2. For bonus functions, build with bonus:
+   ```sh
+   make bonus
+   ```
+3. Include the appropriate header file in your C project:
+   - `inc/libasm.h` for core functions
+   - `inc/libasm_bonus.h` for bonus functions
+4. Link with `libasm.a`:
    ```sh
    gcc your_program.c -L. -lasm -o your_program
    ```
-4. Use the implemented functions as regular C functions.
+5. Use the implemented functions as regular C functions.
+
+## Quick Start
+
+```sh
+# Build library and run core tests
+make
+make test_program
+./test_program
+
+# Build bonus functions and run bonus tests
+make bonus
+make test_program_bonus
+./test_program_bonus
+```
 
 ## Authors & License
 
