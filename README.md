@@ -99,7 +99,14 @@ make test_program
 ./test_program
 ```
 
-Tests: **ft_strlen**, **ft_strcpy**, **ft_strcmp**, **ft_write**, **ft_read**, **ft_strdup**
+Tests:
+
+- **ft_strlen** - string length calculation
+- **ft_strcpy** - string copying
+- **ft_strcmp** - string comparison
+- **ft_write** - writing to file descriptors
+- **ft_read** - reading from file descriptors
+- **ft_strdup** - string duplication
 
 **Test bonus functions:**
 
@@ -108,7 +115,13 @@ make test_program_bonus
 ./test_program_bonus
 ```
 
-Tests: **ft_atoi_base**, **ft_list_push_front**, **ft_list_size**, **ft_list_sort**, **ft_list_remove_if**
+Tests:
+
+- **ft_atoi_base** - string to integer conversion with custom base
+- **ft_list_push_front** - adding elements to linked list
+- **ft_list_size** - counting elements in linked list
+- **ft_list_sort** - sorting linked list
+- **ft_list_remove_if** - removing elements from linked list
 
 ## Usage in Your Project
 
