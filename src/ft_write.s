@@ -13,16 +13,16 @@ ft_write:
     ret
 
 .null_buf:
-    mov     edi, 14             ; EFAULT = 14
-    call    qword [rel __errno_location wrt ..gotpc]
-    mov     dword [rax], edi    ; *errno = EFAULT
-    mov     rax, -1
+    mov     edi, 14             ; EFAULT = 14 ; set errno to EFAULT
+    call    qword [rel __errno_location wrt ..gotpc] ; get the address of errno (qword = 8 bytes, rel = relative)
+    mov     dword [rax], edi    ; *errno = EFAULT ; set errno to EFAULT (dword = 4 bytes)
+    mov     rax, -1             ; return -1
     ret
 
 .error:
-    neg     rax                 ; rax = -errno
-    mov     edi, eax            ; edi = errno
-    call    qword [rel __errno_location wrt ..gotpc]
-    mov     dword [rax], edi    ; *errno = errno
-    mov     rax, -1
+    neg     rax                 ; rax = -errno ; negate rax to get the error number
+    mov     edi, eax            ; edi = errno ; move the error number to edi
+    call    qword [rel __errno_location wrt ..gotpc] ; get the address of errno (qword = 8 bytes)
+    mov     dword [rax], edi    ; *errno = errno ; set *errno_ptr = error_code (dword = 4 bytes)
+    mov     rax, -1             ; return -1
     ret 

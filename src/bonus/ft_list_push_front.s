@@ -4,8 +4,8 @@ global ft_list_push_front
 extern malloc
 section .text
 ft_list_push_front:
-    push r12                ; Preserve r12 (callee-saved)
-    push r13                ; Preserve r13 (callee-saved)
+    push r12                ; Preserve r12 (callee-saved) in stack ; r12 is the pointer to the beginning of the list
+    push r13                ; Preserve r13 (callee-saved) in stack ; r13 is the data to be added to the list
 
     test rdi, rdi           ; Check if begin_list is NULL
     jz .return_safe
@@ -14,7 +14,7 @@ ft_list_push_front:
     mov r13, rsi            ; Save data in callee-saved register
 
     ; Create new element
-    mov rdi, 16             ; sizeof(t_list) on 64-bit
+    mov rdi, 16             ; sizeof(t_list) on 64-bit (8 bytes for data, 8 bytes for next)
     call malloc wrt ..plt
     test rax, rax           ; Check malloc result
     jz .return_safe         ; If malloc fails, do nothing
